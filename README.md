@@ -99,20 +99,37 @@ And of course here is the standard setup:
 -   Plug in the USB keyboard and the USB WiFi module
 -   Don't forget the HDMI cable for your screen and power on the Pi
 
-After some seconds you will notice the boot loader on the screen. 
-Another reboot helps sometimes if it fails.
+After some seconds you will notice the boot loader on the screen.
  
-### Configure your Onion Pi!
+### Configure Raspbian!
 
 1.  **Expand the file system** and **change the user password**
 
-2.  Set the **international options**: **timezone** and **keyboard layout**
+2.  Set the **international options**: **time zone** and **keyboard layout**
 
 3.  **Advanced Options**: **Change** the **host name** and **enable ssh**
 
 It's time for another *reboot*!
 
 The log in is **pi** and the password is in your mind.
+
+### Connect with ssh
+
+If you enabled *ssh* you will find the IP address on the end of the boot.
+
+You can always check the IP address when you are logged in, find *eth0*:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo ifconfig -a
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+### Reboot your Onion Pi
+
+Sometimes you need to reboot your Pi:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo reboot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Update your Onion Pi
 
@@ -132,15 +149,72 @@ Keep your Onion Pi up to date. Do updates frequently!
 sudo ifconfig -a
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you miss a *wlan0*:
+If you miss a *wlan0*, shut down the Pi first:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-shutdown -h now
+sudo shutdown -h now
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Plug in a USB WiFi module and start the Pi. 
 
 Make sure that you have *wlan0* working before continuing...
+
+### Install a DHCP server
+
+A DHCP (Dynamic Host Configuration Protocol) server will manage the IP addresses of your devices when you connect to the AP.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo apt-get install hostapd isc-dhcp-server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Don't worry if you get a fail on starting the DHCP server. We need to configure it first:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo nano /etc/dhcp/dhcpd.conf 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Add a *#* before, so we will comment it out of the configuration:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#option domain-name "example.org";
+#option domain-name-servers ns1.example.org, ns2.example.org;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+And remove the *#* for:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+authoritative;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At the end of the file add these lines (you can copy and paste it in your ssh client):
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+subnet 192.168.42.0 netmask 255.255.255.0 {
+    range 192.168.42.10 192.168.42.50;
+    option broadcast-address 192.168.42.255;
+    option routers 192.168.42.1;
+    default-lease-time 600;
+    max-lease-time 7200;
+    option domain-name "local";
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To save a file in **nano**, use this combo: *CTRL-X -> Y + ENTER*
+
+So, save the file and set the DCHP server to the USB WiFi module:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo nano /etc/default/isc-dhcp-server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write *wlan0* at the end of the file:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INTERFACES="wlan0"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Save it. We finished the DHCP server installation and configuration. Congrats!
 
 How to use it?
 --------------
