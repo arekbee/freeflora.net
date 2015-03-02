@@ -39,21 +39,21 @@ Let's take a look at a private network and a typical use case at home:
 
 1.  A device connects to a wireless access point (**AP**) - physically a router
 
-2.  The router operates the private network, called **LAN **(Local Area Network)
+2.  The router operates the private network, called **LAN** (Local Area Network)
 
-3.  Networks at home are connected to **WAN **(Wide Area Network)
+3.  Networks at home are connected to **WAN** (Wide Area Network)
 
  
 
 Now, the device navigates to a website and will be soon connected to a web
 server.
 
-The information will pass the **AP**, through the **LAN **and will go to the
+The information will pass the **AP**, through the **LAN** and will go to the
 **WAN** and back.
 
  
 
-*Welcome to the internet! *
+*Welcome to the internet!*
 
  
 
