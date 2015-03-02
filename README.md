@@ -1,10 +1,7 @@
-Onion Pi ( Raspberry Pi + Tor ) 
-================================
+Onion Pi ( Raspberry Pi + Tor )
+===============================
 
-wireless access point distribution
-==================================
-
- 
+### wireless access point distribution
 
 Freeflora.net will help you to run an anonymous wireless access point (AP) on a
 Raspberry Pi.
@@ -16,17 +13,15 @@ Pi**.
 
  
 
--   https://www.torproject.org/
+-   https://www.torproject.org
 
 -   https://en.wikipedia.org/wiki/Tor\_(anonymity\_network)
 
--   https://metrics.torproject.org/
+-   https://metrics.torproject.org
 
--   https://www.raspberrypi.org/
+-   https://www.raspberrypi.org
 
 -   https://en.wikipedia.org/wiki/Raspberry\_Pi
-
- 
 
 Please help me understand how Onion Pi works?
 ---------------------------------------------
@@ -53,7 +48,7 @@ The information will pass the **AP**, through the **LAN** and will go to the
 
  
 
-*Welcome to the internet!*
+### *Welcome to the internet!*
 
  
 
@@ -83,8 +78,6 @@ For example:
 If you log in at some social network site with your private account, seriously,
 sell your Onion Pi!
 
- 
-
 What do I need for an Onion Pi?
 -------------------------------
 
@@ -95,8 +88,6 @@ buy online.
 
 If you get one, please check if you have all that is required to make an onion
 of it:
-
- 
 
 ### Requirements
 
@@ -118,8 +109,6 @@ of it:
 
 -   HDMI cable for **setup only**
 
- 
-
 How to install an Onion Pi?
 ---------------------------
 
@@ -127,31 +116,25 @@ How to install an Onion Pi?
 
 The heart of the Onion Pi is the operating system. We use **Raspbian**.
 
- 
-
 Raspbian is a Linux operating system based on Debian and optimized for the
-Raspberry Pi hardware: https://www.raspbian.org/
-
- 
+Raspberry Pi hardware: https://www.raspbian.org
 
 ### Raspbian
-
- 
 
 1.  Download the latest Raspbian image from:
 
     1.  https://downloads.raspberrypi.org/raspbian\_latest
 
-2.  If you are using Windows, that tool can help you to copy the image to your
+2.  If you are using Windows, this tool can help you to copy the image to your
     SD card:
 
-    1.  Win32DiskImager: https://sourceforge.net/projects/win32diskimager/
+    1.  Win32DiskImager: https://sourceforge.net/projects/win32diskimager
 
-3.  Here is an installation guide for Mac OS, Linux and Windows:
+3.  Here is a complete installation guide for Mac OS, Linux and Windows:
 
     1.  https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 
-
+And of course here the standard setup:
 
 -   Put the SD card (Raspbian image) into your Pi
 
@@ -164,16 +147,50 @@ Raspberry Pi hardware: https://www.raspbian.org/
  
 
 After some seconds you will notice the boot loader on the screen. Another reboot
-can help sometimes if it fails.
+helps sometimes if it fails.
 
  
 
+### Configure your Onion Pi!
+
+1.  **Expand the file system** and **change the user password**
+
+2.  Set the **international options**: **timezone** and **keyboard layout**
+
+3.  **Advanced Options**: **Change** the **host name** and **enable ssh**
+
+It's time for another *reboot*!
+
  
 
-Configure your Onion Pi!
-------------------------
+The log in is **pi** and the password is in your mind.
 
- 
+### Update your Onion Pi
+
+It's always good to have the latest libraries on your system:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Keep your Onion Pi up to date. Do updates frequently!
+
+### USB WiFi module check
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo ifconfig -a
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you miss a *wlan0*:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+shutdown -h now
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Plug in a USB WiFi module and start the Pi. Make sure that you have *wlan0*
+working before continuing...
 
 How to use it?
 --------------
