@@ -38,11 +38,9 @@ In reality all websites have user identification and that's a serious problem fo
 
 That means it's not private at all! **Yes, Onion Pi has these problems, too!**
 
-** If you want anonymity disable cookies, scripts and ads 
-and run your web browser in private mode.**
+**If you want anonymity disable cookies, scripts and ads and run your web browser in private mode.**
 
-** Don't use your private log in and password on public websites! 
-Don't trust anything. Be aware!**
+**Don't use your private log in and password on public websites! Don't trust anything. Be aware!**
 
 *For example:
 If you log in at some social network site with your private account, seriously, sell your Onion Pi!*
@@ -101,7 +99,8 @@ And of course here is the standard setup:
 -   Plug in the USB keyboard and the USB WiFi module
 -   Don't forget the HDMI cable for your screen and power on the Pi
 
-After some seconds you will notice the boot loader on the screen. Another reboot helps sometimes if it fails.
+After some seconds you will notice the boot loader on the screen. 
+Another reboot helps sometimes if it fails.
  
 ### Configure your Onion Pi!
 
@@ -139,7 +138,9 @@ If you miss a *wlan0*:
 shutdown -h now
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Plug in a USB WiFi module and start the Pi. Make sure that you have *wlan0* working before continuing...
+Plug in a USB WiFi module and start the Pi. 
+
+Make sure that you have *wlan0* working before continuing...
 
 How to use it?
 --------------
