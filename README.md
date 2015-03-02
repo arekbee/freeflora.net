@@ -38,10 +38,10 @@ In reality all websites have user identification and that's a serious problem fo
 
 That means it's not private at all! **Yes, Onion Pi has these problems, too!**
 
-**--> If you want anonymity disable cookies, scripts and ads 
+** If you want anonymity disable cookies, scripts and ads 
 and run your web browser in private mode.**
 
-** --> Don't use your private log in and password on public websites! 
+** Don't use your private log in and password on public websites! 
 Don't trust anything. Be aware!**
 
 *For example:
@@ -68,11 +68,8 @@ of it:
 
 -   USB WiFi module (check Pi compatibility and AP capability)
 
-
 -   A nice case for your Pi (check PI model)
-
 -   USB keyboard for **setup only**
-
 -   HDMI cable for **setup only**
 
 How to install an Onion Pi?
@@ -100,11 +97,8 @@ Raspbian is a Linux operating system based on Debian and optimized for the Raspb
 And of course here is the standard setup:
 
 -   Put the SD card (Raspbian image) into your Pi
-
 -   Connect the Pi with the Ethernet cable to your router
-
 -   Plug in the USB keyboard and the USB WiFi module
-
 -   Don't forget the HDMI cable for your screen and power on the Pi
 
 After some seconds you will notice the boot loader on the screen. Another reboot helps sometimes if it fails.
