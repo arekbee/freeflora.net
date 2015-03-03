@@ -272,7 +272,9 @@ rsn_pairwise=CCMP
 
 If you are using another driver, change it for example: *driver=nl80211*
 
-Change the **wpa_passphrase** setting and keep it in your mind. Adjust other settings if you know what you are doing.
+Change the **wpa_passphrase** setting and keep it in your mind. 
+
+Adjust other settings if you know what you are doing.
 
 Don't forget to set the new configuration file for the access point:
 
@@ -336,7 +338,7 @@ And add this new line at the bottom to load the saved tables automatically on ne
 up iptables-restore < /etc/iptables.ipv4.nat
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-### Install the adafruit hostapd
+### Install adafruit hostapd
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 wget http://www.adafruit.com/downloads/adafruit_hostapd.zip 
@@ -349,5 +351,36 @@ sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
 
 Check if you find the AP running. Use **CTRL + C** to stop the access point.
 
-Now it's time for another reboot. Your access point is now ready!
+Now it's time for another reboot. 
 
+### Checkpoint! Finish AP!
+
+You can check the status of the services with:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo service hostapd status
+sudo service isc-dhcp-server status
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+And if you need to start the services manually:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo service hostapd start
+sudo service isc-dhcp-server start
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the following commands to finish it:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo update-rc.d hostapd enable
+sudo update-rc.d isc-dhcp-server enable
+sudo mv /usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service ~/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reboot! Your access point is now ready! Next: **Tor!**
+
+You can always check the system log for errors:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tail -f /var/log/syslog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
