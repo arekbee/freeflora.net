@@ -257,7 +257,7 @@ Add these lines that describe the access point configuration:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 interface=wlan0
 driver=rtl871xdrv
-ssid=freeflora.net
+ssid=join freeflora.net
 hw_mode=g
 channel=6
 macaddr_acl=0
@@ -273,6 +273,8 @@ rsn_pairwise=CCMP
 If you are using another driver, you have to change it, for example: *driver=nl80211*
 
 It's important to change the **wpa_passphrase** setting and keep it in your mind. 
+
+Change the **ssid** setting to something like *MYNAME freeflora.net* if you want to support the Onion Pi community!
 
 Adjust a setting if you know what you are doing.
 
