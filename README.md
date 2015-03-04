@@ -464,7 +464,8 @@ Your **Onion Pi** is ready!
 
 - If you don't know if it's working, check: http://www.ipchicken.com
 
-Please, keep up anonymity in the network and install a Onion Pi!
+Please, keep up anonymity in the network and install an Onion Pi!
+
 But keep also in mind that correct behaviour in the net is very important.
 
 Have fun with it!
