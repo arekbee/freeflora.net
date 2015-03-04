@@ -73,7 +73,7 @@ of it:
 How to install an Onion Pi?
 ---------------------------
 
-The heart of the Onion Pi is the operating system. We use **Raspbian**.
+The heart of the Onion Pi is the operating system: **Raspbian**.
 
 Raspbian is a Linux operating system based on Debian and optimized for the Raspberry Pi hardware: https://www.raspbian.org
 
@@ -167,13 +167,13 @@ A DHCP (Dynamic Host Configuration Protocol) server will manage the IP addresses
 sudo apt-get install hostapd isc-dhcp-server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't worry if you get a fail on starting the DHCP server. We need to configure it first:
+Don't worry if you get a fail on starting the DHCP server. You need to configure it first:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo nano /etc/dhcp/dhcpd.conf 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add a *#* before, so we will comment it in the configuration and ignore the lines:
+Add a *#* before a line, so you will comment and ignore it in the configuration. Change these lines:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #option domain-name "example.org";
@@ -200,9 +200,9 @@ subnet 192.168.42.0 netmask 255.255.255.0 {
     }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To save a file in *nano*, use this combo: **CTRL-X -> Y + ENTER**
+To save a file in *nano*, use this combo: **CTRL-X --> Y + ENTER**
 
-So, save the file and set the DCHP server interfces to the USB WiFi module:
+So, save the file and set the DCHP server interfaces to the USB WiFi module:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo nano /etc/default/isc-dhcp-server
@@ -214,11 +214,11 @@ Write *wlan0* at the end of the file:
 INTERFACES="wlan0"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Save it. We finished the DHCP server installation and configuration. Congrats!
+Save it. You finished the DHCP server installation and configuration. Congrats!
 
-### Fix IP address for the AP 
+### Static IP address for the AP 
 
-The wireless access point needs a static IP address, first shut down the interface:
+The wireless access point needs a static IP address, first, you have to shut down the interface:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo ifdown wlan0
@@ -230,7 +230,7 @@ Change the settings in the interface configuration:
 sudo nano /etc/network/interfaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*After* the line **allow hotplug wlan0** add these lines and remove the rest:
+*After* the line **allow hotplug wlan0** you have to add these lines and remove the rest:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 iface wlan0 inet static
@@ -252,7 +252,7 @@ Create a new configuration file for the access point:
 sudo nano /etc/hostapd/hostapd.conf
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add these lines that describe the access point settings:
+Add these lines that describe the access point configuration:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 interface=wlan0
@@ -270,11 +270,11 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are using another driver, change it for example: *driver=nl80211*
+If you are using another driver, you have to change it, for example: *driver=nl80211*
 
-Change the **wpa_passphrase** setting and keep it in your mind. 
+It's important to change the **wpa_passphrase** setting and keep it in your mind. 
 
-Adjust other settings if you know what you are doing.
+Adjust a setting if you know what you are doing.
 
 Don't forget to set the new configuration file for the access point:
 
@@ -410,7 +410,7 @@ DNSPort 53
 DNSListenAddress 192.168.42.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the IP tables again:
+Save the file and change the IP tables again:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo iptables -F
@@ -426,7 +426,7 @@ If you need to check the IP tables:
 sudo iptables -t nat -L
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run the following commands:
+You have to run the following commands:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
@@ -435,7 +435,7 @@ sudo chown debian-tor /var/log/tor/notices.log
 sudo chmod 644 /var/log/tor/notices.log
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Check if it worked:
+If you want to see the result of the commands, you can check it:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ls -l /var/log/tor
@@ -453,7 +453,7 @@ If you forget if the service is running:
 sudo service tor status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't forget to start Tor on the next boot:
+But don't forget to start Tor on the next boot:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo update-rc.d tor enable
@@ -464,6 +464,8 @@ Your **Onion Pi** is ready!
 
 - If you don't know if it's working, check: http://www.ipchicken.com
 
+Please, keep up anonymity in the network and install a Onion Pi!
+But keep also in mind that correct behaviour in the net is very important.
 
 Have fun with it!
 
