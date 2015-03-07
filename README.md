@@ -13,6 +13,13 @@ It's simple: If you combine a Raspberry Pi with Tor then you get an **Onion Pi**
 -   https://metrics.torproject.org
 -   http://www.raspberrypi.org
 
+### Download miniOnionPi 
+
+**miniOnionPi** is a ready to use Onion Pi image that is based on MINIBIAN:
+
+https://github.com/floranet/miniOnionPi
+
+
 Please help me understand how Onion Pi works?
 ---------------------------------------------
 
