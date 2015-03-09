@@ -19,6 +19,9 @@ It's simple: If you combine a Raspberry Pi with Tor then you get an **Onion Pi**
 
 https://github.com/floranet/miniOnionPi
 
+### Enjoy the year 2015 with an Onion Pi
+
+[![watch Flora 2015: https://www.youtube.com/watch?v=Z0J7ZWp0sqI](http://img.youtube.com/vi/Z0J7ZWp0sqI/0.jpg)](https://www.youtube.com/watch?v=Z0J7ZWp0sqI)
 
 Please help me understand how Onion Pi works?
 ---------------------------------------------
